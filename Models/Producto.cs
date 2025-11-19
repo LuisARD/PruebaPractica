@@ -1,0 +1,19 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace ApiBackend.Models
+{
+    public class Producto
+    {
+         public int Id { get; set; } // PK
+        public string Nombre { get; set; } = null!;
+        public string? Descripcion { get; set; }
+        public decimal Precio { get; set; }
+        public int Stock { get; set; }
+
+        // Relación con DetalleVenta
+        public ICollection<DetalleVenta> DetallesVenta { get; set; } = new List<DetalleVenta>();
+    }
+}
