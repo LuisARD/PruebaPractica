@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using ApiBackend.Data;
 using ApiBackend.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -21,6 +22,7 @@ namespace ApiBackend.Controllers
         }
 
         // GET: api/Productos
+        [AllowAnonymous]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Producto>>> GetProductos()
         {
@@ -28,6 +30,7 @@ namespace ApiBackend.Controllers
         }
 
         // GET: api/Productos/5
+        [AllowAnonymous]
         [HttpGet("{id}")]
         public async Task<ActionResult<Producto>> GetProducto(int id)
         {
@@ -42,6 +45,7 @@ namespace ApiBackend.Controllers
         }
 
         // POST: api/Productos
+        [Authorize]
         [HttpPost]
         public async Task<ActionResult<Producto>> PostProducto(Producto producto)
         {
@@ -52,6 +56,7 @@ namespace ApiBackend.Controllers
         }
 
         // PUT: api/Productos/5
+        [Authorize]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutProducto(int id, Producto producto)
         {
@@ -82,6 +87,7 @@ namespace ApiBackend.Controllers
         }
 
         // DELETE: api/Productos/5
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteProducto(int id)
         {

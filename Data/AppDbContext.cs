@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ApiBackend.Models;
+using ApiBackend.AuthServices;
 using Microsoft.EntityFrameworkCore;
 
 namespace ApiBackend.Data
@@ -17,6 +18,7 @@ namespace ApiBackend.Data
         public DbSet<Cliente> Clientes { get; set; }
         public DbSet<Venta> Ventas { get; set; }
         public DbSet<DetalleVenta> DetallesVenta { get; set; }
+        public DbSet<Usuario>Usuarios { get; set;}
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

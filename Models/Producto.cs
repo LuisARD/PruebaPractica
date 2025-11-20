@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace ApiBackend.Models
@@ -14,6 +15,7 @@ namespace ApiBackend.Models
         public int Stock { get; set; }
 
         // Relación con DetalleVenta
+       [JsonIgnore]
         public ICollection<DetalleVenta> DetallesVenta { get; set; } = new List<DetalleVenta>();
     }
 }

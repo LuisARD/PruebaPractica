@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Text.Json.Serialization;
 
 namespace ApiBackend.Models
 {
@@ -13,9 +14,11 @@ namespace ApiBackend.Models
 
         // Cliente
         public int ClienteId { get; set; }
-        public Cliente Cliente { get; set; } = null!;
 
-        // Lista de productos (a través de tabla intermedia)
+        [JsonIgnore] //Prueba para datos requeridos en el api
+        public Cliente? Cliente { get; set; }
+
+        // Lista de productos
         public ICollection<DetalleVenta> Detalles { get; set; } = new List<DetalleVenta>();
     }
 }

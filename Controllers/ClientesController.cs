@@ -4,11 +4,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using ApiBackend.Data;
 using ApiBackend.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace ApiBackend.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class ClientesController : ControllerBase
