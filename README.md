@@ -119,3 +119,5 @@ Instrucciones para Ejecutar el Proyecto
 Clonar repositorio tanto ApiBackend como frontend-vue y corre lo siguiente:
 - En el ApiBackend necesitas acceder, configurar la nueva cadena de conexión en appsettings,json, aplicar las migraciones “dotnet ef database update” esto te creara las tablas y datos que se estarán utilizando, configurar tu puerto y correr el API con “dotnet run”.
 - En el frontend-vue necesitas instalar las dependencias de node con “npm install”, verificar el puerto del api y la conexión en el “services/ApiClient.ts” y correr el proyecto con el “npm run dev”.
+
+- NOTA: El archivo "postcss.config.cjs" es un archivo que no deberia estar en este repositorio, simplemente eliminalo si el front presentas fallas para cargar.
