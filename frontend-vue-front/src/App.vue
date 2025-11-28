@@ -16,13 +16,14 @@ function handleLogout() {
 </script>
 
 <template>
-<div class="min-h-screen bg-base-200">
+  <div class="min-h-screen bg-base-200">
     <!-- NAVBAR -->
-    <div class="navbar bg-base-100 shadow-sm">
-      <!-- IZQUIERDA: menú hamburguesa con dropdown -->
-      <div class="navbar-start w-32">
-        <div class="dropdown">
-          <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
+    <nav class="navbar bg-base-100 shadow-sm px-4 md:px-8">
+      <!-- IZQUIERDA -->
+      <div class="navbar-start gap-2">
+        <!-- Menú hamburguesa SOLO en mobile -->
+        <div class="dropdown md:hidden">
+          <div tabindex="0" role="button" class="btn btn-ghost btn-square">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               class="h-5 w-5"
@@ -39,17 +40,14 @@ function handleLogout() {
             </svg>
           </div>
 
-          <!-- Dropdown con rutas -->
+          <!-- Dropdown mobile -->
           <ul
             tabindex="-1"
-            class="menu menu-sm dropdown-content bg-base-100 rounded-box z-10 mt-3 w-52 p-2 shadow"
+            class="menu menu-sm dropdown-content mt-3 z-10 p-2 shadow bg-base-100 rounded-box w-52"
           >
-            <!-- Productos (siempre visible) -->
             <li>
               <router-link to="/productos">Productos</router-link>
             </li>
-
-            <!-- Clientes y Ventas solo si está logueado -->
             <li v-if="loggedIn">
               <router-link to="/clientes">Clientes</router-link>
             </li>
@@ -58,32 +56,47 @@ function handleLogout() {
             </li>
           </ul>
         </div>
-      </div>
 
-      <!-- CENTRO: título -->
-      <div class="navbar-center mr-50 ml-80">
-        <router-link to="/productos" class="btn btn-ghost text-xl mr-9">
+        <!-- Título SIEMPRE visible, pero se adapta de tamaño -->
+        <router-link
+          to="/productos"
+          class="btn btn-ghost normal-case text-lg md:text-xl font-semibold"
+        >
           Gestión de Productos
         </router-link>
       </div>
 
-      <!-- DERECHA: login / logout -->
-<div class="navbar-end w-50 ml-30">
-  <!-- Un solo botón que cambia según loggedIn -->
-  <button
-    class="btn btn-sm"
-    :class="loggedIn ? 'btn-error text-white' : 'btn-outline'"
-    @click="loggedIn ? handleLogout() : router.push('/login')"
-  >
-    {{ loggedIn ? "Cerrar sesión" : "Iniciar sesión" }}
-  </button>
-</div>
+      <!-- CENTRO: menú horizontal SOLO en pantallas medianas+ -->
+      <div class="navbar-center hidden md:flex">
+        <ul class="menu menu-horizontal px-1">
+          <li>
+            <router-link to="/productos">Productos</router-link>
+          </li>
+          <li v-if="loggedIn">
+            <router-link to="/clientes">Clientes</router-link>
+          </li>
+          <li v-if="loggedIn">
+            <router-link to="/ventas">Ventas</router-link>
+          </li>
+        </ul>
+      </div>
 
-    </div>
+      <!-- DERECHA: login / logout -->
+      <div class="navbar-end">
+        <button
+          class="btn btn-sm md:btn-md"
+          :class="loggedIn ? 'btn-error text-white' : 'btn-outline'"
+          @click="loggedIn ? handleLogout() : router.push('/login')"
+        >
+          {{ loggedIn ? "Cerrar sesión" : "Iniciar sesión" }}
+        </button>
+      </div>
+    </nav>
 
     <!-- CONTENIDO -->
-    <main class="p-4">
+    <main class="p-4 md:p-6">
       <router-view />
     </main>
   </div>
 </template>
+

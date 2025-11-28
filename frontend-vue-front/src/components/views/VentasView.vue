@@ -56,7 +56,6 @@ const loggedIn = computed(() => isLoggedIn());
     <header class="flex justify-between items-center">
       <div>
         <h1 class="text-2xl font-semibold">Ventas</h1>
-        <p class="text-sm text-base-content/70">Registra nuevas ventas y revisa el historial.</p>
       </div>
 
       <!-- Botón agregar -->
@@ -79,7 +78,7 @@ const loggedIn = computed(() => isLoggedIn());
     <!-- TABLA -->
     <template v-else>
 
-      <div v-if="ventas.length" class="overflow-x-auto rounded-box border border-base-content/10">
+      <div v-if="ventas.length" class="overflow-x-auto rounded-box border border-base-content/5 bg-base-100">
         <table class="table">
           <thead>
             <tr>
@@ -94,7 +93,7 @@ const loggedIn = computed(() => isLoggedIn());
           </thead>
 
           <tbody>
-            <tr v-for="(v, index) in ventas" :key="v.id">
+            <tr class="hover:bg-base-300" v-for="(v, index) in ventas" :key="v.id">
               <td>{{ index + 1 }}</td>
               <td>{{ v.id }}</td>
               <td>{{ new Date(v.fecha).toLocaleString() }}</td>

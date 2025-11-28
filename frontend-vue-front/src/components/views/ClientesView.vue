@@ -110,12 +110,12 @@ const tituloModal = computed(() =>
   </tr>
 </thead>
 <tbody>
-  <tr v-for="(c, index) in clientes" :key="c.id">
+  <tr class="hover:bg-base-300" v-for="(c, index) in clientes" :key="c.id">
     <th>{{ index + 1 }}</th>
-    <td>{{ c.id }}</td>   <!-- <--- mostramos el id -->
-    <td>{{ c.nombre }}</td>
-    <td>{{ c.email }}</td>
-    <td>{{ c.telefono }}</td>
+    <td >{{ c.id }}</td>   <!-- <--- mostramos el id -->
+    <td >{{ c.nombre }}</td>
+    <td >{{ c.email }}</td>
+    <td >{{ c.telefono }}</td>
     <td class="flex gap-2">
       <button class="btn btn-xs btn-outline" @click="abrirModalEditar(c)">
         Editar

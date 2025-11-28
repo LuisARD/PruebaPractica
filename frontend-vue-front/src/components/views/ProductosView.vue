@@ -103,12 +103,12 @@ onMounted(() => {
         <template v-else-if="productos.length">
           <div class="overflow-x-auto rounded-box border border-base-content/5 bg-base-100">
             <table class="table">
-              <tr v-for="(p, index) in productos" :key="p.id">
+              <tr class="hover:bg-base-300" v-for="(p, index) in productos" :key="p.id">
   <th>{{ index + 1 }}</th>
-  <td>{{ p.nombre }}</td>
-  <td>{{ p.descripcion }}</td>
-  <td>${{ Number(p.precio ?? 0).toFixed(2) }}</td>
-  <td>{{ p.stock }}</td>
+  <td >{{ p.nombre }}</td>
+  <td >{{ p.descripcion }}</td>
+  <td >${{ Number(p.precio ?? 0).toFixed(2) }}</td>
+  <td >{{ p.stock }}</td>
 
   <td v-if="usuarioLogueado" class="flex gap-2">
     <button
